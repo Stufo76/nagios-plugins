@@ -10,7 +10,7 @@
 	Author:	Juan Granados and Diego Pastore
 #>
 
-$Services = Get-CimInstance win32_service -Filter "startmode = 'auto' AND state != 'running' AND exitcode != 0"  | select name, startname, exitcode
+$Services = Get-CimInstance win32_service -Filter "startmode = 'auto' AND state != 'running' AND exitcode != 0 AND name != 'CynetLauncher'"  | select name, startname, exitcode
 $ServicesRunning = Get-CimInstance win32_service -Filter "state = 'running'"
 if ([string]::IsNullOrEmpty($Services)) {
     Write-Output "OK: All services running | ServicesRunning=$($ServicesRunning.Count);0;0;0;0"
