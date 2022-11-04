@@ -19,7 +19,6 @@ if ([string]::IsNullOrEmpty($Services)) {
             $ServicesStopped += "$($Service.Name)(Stopped),"
             $ExitCode = 1
         }
-    }
     if ($ExitCode -eq 1) {
         Write-Output "CRITICAL: Service(s) stopped: $($ServicesStopped.TrimEnd(",")) | ServicesRunning=$($ServicesRunning.Count);0;0;0;0"
         Exit(1)
