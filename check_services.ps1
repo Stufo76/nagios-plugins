@@ -7,7 +7,7 @@
 	OK: All services running.
 	CRITICAL: Services stopped.
 .NOTES 
-	Author:	Diego Pastore
+	Author:	Juan Granados and Diego Pastore
 #>
 
 $Services = Get-CimInstance win32_service -Filter "startmode = 'auto' AND state != 'running' AND exitcode != 0"  | select name, startname, exitcode
