@@ -15,11 +15,12 @@ $ServicesRunning = Get-CimInstance win32_service -Filter "state = 'running'"
 if ([string]::IsNullOrEmpty($Services)) {
     Write-Output "OK: All services running | ServicesRunning=$($ServicesRunning.Count);0;0;0;0"
     Exit(0)
-} else {
-            $ServicesStopped += "$($Service.Name)(Stopped),"
-            $ExitCode = 1
-        }
-    if ($ExitCode -eq 1) {
+	}
+else {
+		$ServicesStopped=""
+		foreach ($Service in $Services){
+			$ServicesStopped += "$($Service.Name)(Stopped),"
+		}
+}
         Write-Output "CRITICAL: Service(s) stopped: $($ServicesStopped.TrimEnd(",")) | ServicesRunning=$($ServicesRunning.Count);0;0;0;0"
         Exit(1)
-}
