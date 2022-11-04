@@ -23,4 +23,4 @@ else {
 		}
 }
 Write-Output "CRITICAL: Service(s) stopped: $($ServicesStopped.TrimEnd(",")) | ServicesRunning=$($ServicesRunning.Count);0;0;0;0"
-Exit(1)
+Exit(2)
